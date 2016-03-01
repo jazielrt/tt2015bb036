@@ -1,0 +1,31 @@
+####INSTALACION DE GRADLE EN LINUX:
+
+#DESCARGAMOS GRADLE
+$ wget https://services.gradle.org/distributions/gradle-2.9-all.zip
+
+#DESCOMPRIMIMOS
+$ unzip -x gradle-2.9-all.zip
+
+#CREAMOS LA CARPETA DONDE SE INSTALARA
+$ sudo mkdir /opt/gradle
+
+#MOVEMOS LA CARPETA QUE DESCOMPRIMIMOS EN LA CARPETA DE INSTALACION
+$ sudo mv gradle-2.9 /opt/gradle
+
+#CREAMOS UN LINK SIMBOLICO PARA FACILITAR UN FUTURO CAMBIO DE VERSION
+$ sudo ln -sfn gradle-2.9 /opt/gradle/latest
+
+#AGREGAMOS LA CARPETA DE GRADLE COMO VARIABLE DE ENTRONO
+$ sudo vim /etc/profile.d/gradle.sh
+
+#EL ARCHIVO /etc/profile.d/gradle DEBE CONTENER LO SIGUIENTE
+export GRADLE_HOME=/opt/gradle/latest
+export PATH=$PATH:$GRADLE_HOME/bin
+
+#ACTUALIZAMOS LA VARIABLE DE ENTORNO
+. /etc/profile.d/gradle.sh
+
+#VERIFICAMOS LA INSTALACION
+gradle -v
+
+

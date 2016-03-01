@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'jetty'
+
+def defaultEncoding = 'ISO-8859-1'
+ext{ springVersion = '4.1.6.RELEASE' }
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+compileJava { 
+	options.encoding = defaultEncoding 
+}
+
+compileTestJava { 
+	options.encoding = defaultEncoding 
+}
+
+repositories {
+	mavenCentral()
+	jcenter()
+}
+
+dependencies {
+	providedCompile "javax.servlet:servlet-api:2.5"
+    providedCompile "javax.servlet:jsp-api:2.0"
+    providedCompile "javax.el:el-api:2.2"
+	compile "jstl:jstl:1.2"
+	
+	compile "org.springframework:spring-webmvc:$springVersion"
+	compile 'javax.validation:validation-api:1.1.0.Final'
+	compile 'com.fasterxml.jackson.core:jackson-databind:2.5.1'
+	compile 'org.springframework.webflow:spring-webflow:2.4.1.RELEASE'
+}
+
